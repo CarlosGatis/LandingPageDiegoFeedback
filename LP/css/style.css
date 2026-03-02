@@ -1,0 +1,612 @@
+:root{
+  --gray-900:#4B4B4D;
+  --gray-700:#727376;
+  --gray-300:#BDBFC1;
+  --white:#FEFEFE;
+
+  --blue-900:#314C72;
+  --blue-700:#2F6382;
+  --teal-600:#2C7F92;
+  --teal-800:#0E6A70;
+
+  --shadow:0 18px 40px rgba(0,0,0,.12);
+  --radius:16px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--gray-900);
+  background:var(--white);
+}
+
+.container{
+  width:90%;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+section[id]{scroll-margin-top:110px;}
+
+/* HEADER */
+.header{
+  background:var(--white);
+  border-bottom:2px solid var(--blue-700);
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+}
+.header-content{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:90px;
+}
+.logo img{height:75px;}
+
+.menu a{
+  margin-left:25px;
+  text-decoration:none;
+  color:var(--gray-900);
+  font-size:14px;
+  text-transform:uppercase;
+  position:relative;
+}
+.menu a.active,
+.menu a:hover{color:var(--teal-600);}
+.menu a.active::after,
+.menu a:hover::after{
+  content:"";
+  position:absolute;
+  bottom:-8px;
+  left:0;
+  width:100%;
+  height:2px;
+  background:var(--teal-600);
+}
+
+/* MENU COMPACTO (3 PONTINHOS) */
+.menu-dropdown{position:relative;}
+.menu-dropdown > summary{list-style:none;}
+.menu-dropdown > summary::-webkit-details-marker{display:none;}
+
+.menu-trigger{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  border:none;                 /* sem borda */
+  background:transparent;
+  color:var(--gray-900);
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+  user-select:none;
+}
+.menu-trigger:hover{color:var(--teal-600);}
+.menu-trigger:focus{outline:3px solid rgba(44,127,146,.35);outline-offset:2px;}
+
+/* Painel do menu (desktop: dropdown) */
+.menu-panel{
+  position:absolute;
+  top:calc(100% + 10px);
+  right:0;
+  background:var(--white);
+  border:1px solid rgba(114,115,118,.35);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  padding:10px;
+  min-width:220px;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.menu-panel a{
+  margin-left:0;              /* sobrescreve o menu horizontal */
+  padding:12px 14px;
+  border-radius:12px;
+}
+
+.menu-panel a:hover,
+.menu-panel a.active{
+  background:rgba(189,191,193,.55);
+}
+
+.menu-panel a.active::after,
+.menu-panel a:hover::after{display:none;}
+
+/* SEÇÕES */
+.section{padding:120px 0;}
+.bg-light{background:var(--gray-300);}
+.bg-dark{background:var(--gray-900);}
+.bg-slight{background: #ececec;  h3 {
+  color: #202020; rgin-top:10px;
+}}
+
+.title-light{color:var(--white);}
+.text-light{color:rgba(255,255,255,.9);margin-top:10px;}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  margin-top:90px;
+}
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(75,75,77,.95),
+    rgba(189,191,193,.75)
+  );
+}
+.hero-content{
+  position:relative;
+  color:var(--white);
+  max-width:900px;
+}
+.hero-kicker{
+  letter-spacing:2px;
+  font-weight:800;
+  margin-bottom:10px;
+}
+.hero-content h1{
+  font-size:44px;
+  font-weight:900;
+  margin-bottom:12px;
+}
+.hero-content h2{
+  font-size:22px;
+  font-weight:300;
+}
+
+/* BOTÕES */
+.btn{
+  display:inline-block;
+  padding:14px 22px;
+  border-radius:10px;
+  font-weight:800;
+  text-decoration:none;
+  cursor:pointer;
+  border:2px solid var(--teal-600);
+}
+.btn--primary{
+  background:var(--blue-700);
+  color:var(--white);
+  border-color:var(--blue-700);
+}
+.btn--ghost{
+  color:var(--white);
+  border-color:rgba(255,255,255,.7);
+}
+
+/* PAINÉIS */
+.panel{
+  background:var(--teal-800);
+  border-radius:var(--radius);
+  padding:40px;
+  box-shadow:var(--shadow);
+  color:var(--white);
+}
+.panel--blue{background:var(--blue-900);}
+
+/* SOBRE — imagem em cima, texto embaixo centralizado */
+
+#sobre .sobre-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+
+/* imagem central */
+#sobre .sobre-imagem img{
+  max-width: 260px;
+  width: 100%;
+  border-radius: 14px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* texto centralizado */
+#sobre .sobre-texto{
+  max-width: 800px;
+}
+
+/* listas também centralizadas */
+#sobre .list-box{
+  text-align: center;
+}
+
+#sobre ul{
+  list-style-position: inside;
+}
+
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:24px;
+}
+.card{
+  background:rgba(255,255,255,.08);
+  border-radius:14px;
+  padding:18px;
+  color:var(--white);
+}
+
+/* EMPRESA */
+.empresa-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:18px;
+}
+.video-frame{
+  aspect-ratio:16/9;
+  border-radius:14px;
+  overflow:hidden;
+}
+.video-frame iframe{width:100%;height:100%;}
+.info-box{
+  background:var(--white);
+  padding:16px;
+  border-radius:14px;
+}
+
+/* PRODUTOS */
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+.box--dark{
+  background:rgba(255,255,255,.08);
+  border: radius 18px;
+  padding:30px;
+  color:var(--white);
+  margin-top:24px;
+  border-radius:12px;
+  
+}
+
+/* =========================
+   GALERIA – 4 IMAGENS
+   ========================= */
+.carousel-title{
+  margin-top:60px;
+  margin-bottom:-10px;
+}
+
+.carousel{
+  position:relative;
+  margin-top:40px;
+}
+.carousel-viewport{
+  overflow:hidden;
+  width:100%;
+}
+.carousel-track{
+  display:flex;
+  gap:24px;
+  transition:transform .45s ease;
+  padding:10px 0;
+}
+.carousel-track img{
+  width:calc((100% - 72px) / 4);
+  aspect-ratio:1/1;
+  object-fit:contain;
+  background:rgba(255,255,255,.08);
+  
+  border-radius:14px;
+  padding:16px;
+  flex-shrink:0;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+.carousel-btn{
+  position: absolute;
+  bottom: -60px;        /* joga o botão para baixo das imagens */
+  top: auto;
+  transform: none;
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: 6px;  /* quadrado com leve arredondado */
+  border: none;
+
+  background: #ffffff;
+  font-size: 26px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 6px 16px rgba(0,0,0,.25);
+}
+
+/* esquerda */
+.carousel-btn--left{
+  left: 50%;
+  transform: translateX(-60px);
+}
+
+/* direita */
+.carousel-btn--right{
+  right: 50%;
+  transform: translateX(60px);
+}
+
+/* CONTATO */
+.contact-actions{margin-top:14px;display:flex;gap:12px;}
+.form-wrap{
+  margin-top:18px;
+  background:rgba(199, 195, 195, 0.08);
+  padding:20px;
+  border-radius:var(--radius);
+}
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.field input,
+.field textarea{
+  padding:12px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(0,0,0,.15);
+  color:var(--white);
+}
+
+#contato,
+#contato h2,
+#contato h3,
+#contato p,
+#contato label {
+  color: #ffffff;
+}
+
+#contato .field input,
+#contato .field textarea {
+  color: #ffffff;
+}
+
+#contato .field input::placeholder,
+#contato .field textarea::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+/* RESPONSIVO */
+@media (max-width:1024px){
+  .carousel-track img{
+    width:calc((100% - 24px) / 2);
+  }
+}
+@media (max-width:768px){
+  /* manter logo + 3 pontinhos na mesma linha */
+  .header-content{
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    height:90px;
+  }
+
+  /* menu ocupa a tela toda (painel) */
+  .menu-panel{
+    position:fixed;
+    top:90px;                 /* abaixo do header */
+    left:0;
+    right:0;
+    bottom:0;
+
+    width:100%;
+    min-width:0;
+
+    border-radius:0;
+    padding:18px 16px;
+    overflow:auto;
+    box-shadow:none;
+    border:none;
+  }
+
+  /* fundo escurecido atrás do painel */
+  .menu-dropdown[open]::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    z-index:999;
+  }
+  .menu-panel{z-index:1000;}
+
+  .menu-panel a{font-size:16px;padding:16px 14px;}
+  .hero-content h1{font-size:32px;}
+  .cards{grid-template-columns:1fr;}
+  .empresa-grid,
+  .grid-2,
+  .sobre-content{grid-template-columns:1fr;flex-direction:column;}
+}
+@media (max-width:600px){
+  .carousel-track img{width:100%;}
+}
+
+/* =========================
+   ÍCONES NOS CARDS (PRÁTICA)
+   ========================= */
+
+/* Deixa os cards mais alinhados com ícone em cima */
+#pratica .card{
+  text-align: center;
+  padding: 26px 22px;
+}
+
+/* Ícone */
+#pratica .card-icon{
+  width: 100px;
+  height: 90px;
+  display: block;
+  margin: 0 auto 2px;
+  object-fit: contain;
+  transition:.25s ease;
+  /* se o ícone for escuro, ele vira branco automaticamente */
+  filter: brightness(0) invert(1);
+  opacity: .92;
+}
+.card:hover .card-icon{
+  transform:scale(1.05);
+}
+/* Título do card */
+#pratica .card h3{
+  font-size: 18px;
+  font-weight: 800;
+  margin: 6px 0 10px;
+}
+
+/* Texto do card */
+#pratica .card p{
+  font-size: 15px;
+  line-height: 1.65;
+  opacity: .95;
+}
+
+/* Se você ainda estiver usando h1/h3 em vez de h3/p */
+#pratica .card h1{
+  font-size: 18px;
+  font-weight: 800;
+  margin: 6px 0 10px;
+}
+
+#pratica .card h3{
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.65;
+  opacity: .95;
+}
+
+/* =========================
+   ÍCONES VANTAGENS
+========================= */
+#vantagens .card{
+  text-align:center;
+  padding:26px 22px;
+}
+
+.vantagem-icon{
+  width:80px;
+  height:80px;
+  margin:0 auto 10px;
+  display:block;
+  object-fit:contain;
+  filter:brightness(0) invert(1);
+  opacity:.9;
+}
+
+#vantagens .card:hover .vantagem-icon{
+  transform:scale(1.05);
+}
+/* =========================
+   SOBRE COM DEGRADÊ (imagem + texto embaixo)
+========================= */
+
+#sobre.sobre-degrade{
+  position: relative;
+  padding: 120px 0 70px;
+  background-image: url("../img/sobre.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* degradê por cima da imagem */
+#sobre.sobre-degrade::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.05) 0%,
+    rgba(0,0,0,0.20) 45%,
+    rgba(255,255,255,0.95) 78%,
+    rgba(255,255,255,1) 100%
+  );
+}
+
+/* garante que o texto fica acima do degradê */
+#sobre .sobre-wrap{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* bloco de texto embaixo, centralizado */
+#sobre .sobre-texto{
+  width: 100%;
+  max-width: 820px;
+  text-align: center;
+  color: #2b2b2b;
+  margin-top: 45vh; /* empurra o texto para ficar “abaixo” da foto */
+}
+
+/* ajustes de tipografia */
+#sobre .sobre-texto h2{
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+#sobre .sobre-texto p{
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+/* lista centralizada */
+#sobre .list-box{ text-align:center; }
+#sobre ul{ list-style-position: inside; }
+
+/* mobile: menos altura da foto, texto sobe um pouco */
+@media (max-width: 768px){
+  #sobre.sobre-degrade{
+  position: relative;
+  width: 100%;
+  padding: 120px 0 70px;
+  background-size: cover;
+  background-position: center;
+}
+
+  #sobre .sobre-texto{
+    margin-top: 60vh;
+    max-width: 95%;
+    text-shadow: 0 2px 8px rgba(0,0,0,.35);
+  }
+
+  #sobre .sobre-texto h2{
+    font-size: 40px;
+  }
+}
+
+.markup-section .carousel-item {
+  background: #ffffff;   /* fundo branco */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.markup-section h2 {
+  color: #000000;
+}
+
+/* opcional: remover fundo escuro interno se existir */
+.markup-section .carousel-track {
+  background: transparent;
+}
